@@ -6,11 +6,12 @@ from api import create_app
 
 app = create_app()
 
+PORT = int(os.environ.get("PORT", 8080))
+
 if __name__ == "__main__":
     uvicorn.run(
-        app,
+        "main:app",
         host="0.0.0.0",
-        port=int(os.getenv("PORT", 8080)),
-        access_log=False,
-        log_level="info"
+        port=PORT,
+        reload=False
     )
